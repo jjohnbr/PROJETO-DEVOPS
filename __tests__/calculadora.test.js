@@ -12,7 +12,7 @@ describe('Testes da Calculadora de IMC', () => {
 
   test('3. Deve retornar a classificação correta do IMC', () => {
     expect(classificarIMC(17.5)).toBe('Abaixo do peso')
-    expect(classificarIMC(22.86)).toBe('Peso normal')
+    expect(classificarIMC(0.86)).toBe('Peso normal')
     expect(classificarIMC(27.0)).toBe('Sobrepeso')
   })
 })
