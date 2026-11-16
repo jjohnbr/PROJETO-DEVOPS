@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧮 Calculadora de IMC — Projeto DevOps (CI/CD)
 
-## Getting Started
+Aplicação web desenvolvida com **Next.js** e **TypeScript** para cálculo de Índice de Massa Corporal (IMC), estruturada com uma esteira completa de **Integração Contínua (CI)** e **Entrega Contínua (CD)** utilizando **GitHub Actions**, **Jest** e **Vercel**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 O que o projeto faz?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Interface Web Interativa:** Permite ao usuário informar peso (kg) e altura (m), calculando automaticamente o valor do IMC e exibindo a classificação correspondente (Abaixo do peso, Peso normal, Sobrepeso ou Obesidade) com validação de entradas inválidas.
+2. **Testes Automatizados (Jest):** Garante a precisão matemática do cálculo e o tratamento de erros antes que qualquer alteração seja integrada ao código principal.
+3. **Pipeline de CI/CD (GitHub Actions):**
+   * **Em Pull Requests (`pull_request`):** Instala as dependências, executa os testes unitários e valida o *build* da aplicação. Se algum teste falhar, o *merge* para a branch `main` é bloqueado automaticamente.
+   * **Na Branch Principal (`main`):** Após a aprovação e o *merge* do Pull Request, o pipeline executa novamente as validações e realiza o **deploy automático em produção na Vercel**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tecnologias Utilizadas
 
-## Learn More
+* **Frontend / Framework:** Next.js (App Router), React, TypeScript
+* **Testes Unitários:** Jest
+* **CI/CD & Versionamento:** Git, GitHub, GitHub Actions
+* **Hospedagem / Deploy:** Vercel
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📂 Estrutura do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+├── .github/workflows/
+│   └── ci-cd.yml          # Configuração da esteira de CI/CD (Testes, Build e Deploy)
+├── __tests__/
+│   └── calculadora.test.js # Testes unitários da lógica de cálculo de IMC
+├── app/
+│   └── page.tsx           # Interface principal da aplicação
+├── src/utils/
+│   └── calculadora.js     # Lógica pura do cálculo e classificação do IMC
+├── jest.config.js         # Configuração do framework de testes Jest
+└── package.json           # Dependências e scripts do projeto
