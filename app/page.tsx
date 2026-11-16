@@ -64,7 +64,7 @@ export default function Home() {
             color: "#ffffff",
           }}
         >
-          Calculadora de IMC - DevOps
+          Calculadora de IMC - DevOps ci/cd
         </h1>
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
