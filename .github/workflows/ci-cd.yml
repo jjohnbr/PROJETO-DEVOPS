@@ -1,20 +1,19 @@
-name: CI/CD Pipeline
+name: CI/CD
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Copiar código do repositório
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Configurar o Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -23,8 +22,16 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes automatizados (Jest)
+      - name: Executar build
+        run: npm run build
+
+      - name: Executar testes unitários
         run: npm test
 
-      - name: Executar Build da aplicação Next.js
-        run: npm run build
+  deploy:
+    needs: build-and-test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Disparar deploy na Vercel
+        run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
