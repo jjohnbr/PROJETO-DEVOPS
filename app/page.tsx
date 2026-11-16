@@ -32,15 +32,52 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-900 p-6 font-sans">
-      <div className="w-full max-w-md bg-white dark:bg-zinc-800 rounded-xl shadow-lg p-8 border border-zinc-200 dark:border-zinc-700">
-        <h1 className="text-2xl font-bold text-center text-zinc-800 dark:text-zinc-100 mb-6">
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#09090b",
+        color: "#f4f4f5",
+        fontFamily: "system-ui, -apple-system, sans-serif",
+        padding: "1.5rem",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "420px",
+          backgroundColor: "#18181b",
+          borderRadius: "16px",
+          padding: "2rem",
+          border: "1px solid #27272a",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            textAlign: "center",
+            marginBottom: "1.5rem",
+            color: "#ffffff",
+          }}
+        >
           Calculadora de IMC - DevOps
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           <div>
-            <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+            <label
+              style={{
+                display: "block",
+                fontSize: "0.875rem",
+                fontWeight: "500",
+                color: "#d4d4d8",
+                marginBottom: "0.35rem",
+              }}
+            >
               Peso (kg)
             </label>
             <input
@@ -49,12 +86,29 @@ export default function Home() {
               value={peso}
               onChange={(e) => setPeso(e.target.value)}
               placeholder="Ex: 70"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+              style={{
+                width: "100%",
+                padding: "0.65rem 0.9rem",
+                borderRadius: "8px",
+                border: "1px solid #3f3f46",
+                backgroundColor: "#27272a",
+                color: "#ffffff",
+                fontSize: "1rem",
+                boxSizing: "border-box",
+              }}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+            <label
+              style={{
+                display: "block",
+                fontSize: "0.875rem",
+                fontWeight: "500",
+                color: "#d4d4d8",
+                marginBottom: "0.35rem",
+              }}
+            >
               Altura (m)
             </label>
             <input
@@ -63,30 +117,70 @@ export default function Home() {
               value={altura}
               onChange={(e) => setAltura(e.target.value)}
               placeholder="Ex: 1.75"
-              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+              style={{
+                width: "100%",
+                padding: "0.65rem 0.9rem",
+                borderRadius: "8px",
+                border: "1px solid #3f3f46",
+                backgroundColor: "#27272a",
+                color: "#ffffff",
+                fontSize: "1rem",
+                boxSizing: "border-box",
+              }}
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors"
+            style={{
+              width: "100%",
+              backgroundColor: "#2563eb",
+              color: "#ffffff",
+              fontWeight: "600",
+              padding: "0.75rem",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "1rem",
+              marginTop: "0.5rem",
+            }}
           >
             Calcular IMC
           </button>
         </form>
 
         {erro && (
-          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm text-center">
+          <div
+            style={{
+              marginTop: "1rem",
+              padding: "0.75rem",
+              backgroundColor: "rgba(239, 68, 68, 0.15)",
+              border: "1px solid #ef4444",
+              color: "#fca5a5",
+              borderRadius: "8px",
+              fontSize: "0.875rem",
+              textAlign: "center",
+            }}
+          >
             {erro}
           </div>
         )}
 
         {resultado && (
-          <div className="mt-6 p-4 bg-zinc-100 dark:bg-zinc-700 rounded-lg text-center">
-            <p className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Seu IMC: <span className="text-blue-600 dark:text-blue-400">{resultado.imc}</span>
+          <div
+            style={{
+              marginTop: "1.5rem",
+              padding: "1rem",
+              backgroundColor: "#27272a",
+              borderRadius: "10px",
+              textAlign: "center",
+              border: "1px solid #3f3f46",
+            }}
+          >
+            <p style={{ fontSize: "1.125rem", fontWeight: "600", margin: 0 }}>
+              Seu IMC: <span style={{ color: "#60a5fa" }}>{resultado.imc}</span>
             </p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-300 mt-1">
+            <p style={{ fontSize: "0.9rem", color: "#d4d4d8", marginTop: "0.35rem", marginBottom: 0 }}>
               Classificação: <strong>{resultado.classificacao}</strong>
             </p>
           </div>
