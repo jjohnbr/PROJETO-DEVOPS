@@ -27,7 +27,7 @@ export default function Home() {
       const classificacao = classificarIMC(imc);
       setResultado({ imc, classificacao });
     } catch (err: any) {
-      setErro(err.message || "Erro ao calcular o IMC.");
+      setErro(err.message || "Erro ao calcular o IMC.!");
     }
   };
 
